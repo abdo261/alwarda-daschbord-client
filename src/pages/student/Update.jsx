@@ -1,4 +1,4 @@
-
+import React from "react";
 import {
   Button,
   Input,
@@ -10,28 +10,21 @@ import {
 } from "@nextui-org/react";
 import { FaSchool } from "react-icons/fa";
 
-const Edit = ({ isOpen, onOpenChange, itemToEdit, SelectEditItem }) => {
+const Update = ({ isOpen, onOpenChange }) => {
   const handelSubmit = (e) => {
     e.preventDefault();
     console.log("submit");
   };
-  const openChange = () => {
-    if (isOpen) {
-      SelectEditItem(null);
-    }
-    onOpenChange();
-  };
   return (
-    <Modal isOpen={isOpen} onOpenChange={openChange} placement="center">
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center">
       <ModalContent>
         {(onClose) => (
-          <form onSubmit={handelSubmit} className="dark:text-white">
+          <form onSubmit={handelSubmit}>
             <ModalHeader className="flex flex-col gap-1">
-              Modifié Le Centre
+              Modal Title
             </ModalHeader>
             <ModalBody>
               <Input
-                size="lg"
                 autoFocus
                 endContent={
                   <FaSchool className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
@@ -41,7 +34,10 @@ const Edit = ({ isOpen, onOpenChange, itemToEdit, SelectEditItem }) => {
                 variant="bordered"
               />
 
-              <label for="color" class="block text-sm font-medium mb-2 ">
+              <label
+                for="color"
+                class="block text-sm font-medium mb-2 dark:text-white"
+              >
                 Choisire un coleur
               </label>
               <input
@@ -66,4 +62,4 @@ const Edit = ({ isOpen, onOpenChange, itemToEdit, SelectEditItem }) => {
   );
 };
 
-export default Edit;
+export default Update;

@@ -1,11 +1,29 @@
 import React from "react";
 import { FaSchool } from "react-icons/fa";
 import { PiStudent } from "react-icons/pi";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
 import { Tooltip } from "@nextui-org/react";
+import { FaUserShield } from "react-icons/fa6";
+import { TbSchool } from "react-icons/tb";
+import { GiBookCover } from "react-icons/gi";
+import { TbReportMoney } from "react-icons/tb";
+import { FaHandHoldingUsd } from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
 
-const Links = [{ name: "Eleves", href: "/eleves", icon: <PiStudent /> }];
+const AdminLinks = [
+  { name: "Utilisateurs", href: "/utilisateurs", icon: <FaUserShield /> },
+  { name: "Centres", href: "/centres", icon: <FaSchool /> },
+];
+const Links = [
+  { name: "Eleves", href: "/eleves", icon: <PiStudent /> },
+  { name: "Enseignants", href: "/enseignats", icon: <FaUserTie /> },
+  { name: "Niveaux", href: "/niveaux", icon: <TbSchool /> },
+  { name: "Matiéres", href: "/matiéres", icon: <GiBookCover /> },
+  { name: "Abonnements", href: "/abonnements", icon: <TbReportMoney /> },
+  { name: "Paiement", href: "/paiements", icon: <FaHandHoldingUsd /> },
+
+];
 const Sidebare = ({ open }) => {
   return (
     <aside
@@ -15,41 +33,62 @@ const Sidebare = ({ open }) => {
     >
       <div>
         <div className="inline-flex size-16 items-center justify-center">
-          <span className="grid size-10 place-content-center rounded-lg bg-gray-200  text-gray-600 font-bold text-lg">
+          <Link
+            to="/"
+            className="grid size-10 place-content-center rounded-lg bg-gray-200  text-gray-600 font-bold text-lg"
+          >
             L
-          </span>
+          </Link>
         </div>
 
         <div className="border-t border-gray-100">
           <div className="px-2">
             <div className="py-4">
-              <Tooltip
-                content="Centres"
-                showArrow
-                placement="right"
-                size="lg"
-                color="primary"
-                radius="sm"
-              >
-                <NavLink
-                  to="/centres"
-                  className={` group relative flex justify-center rounded p-2  text-gray-500 hover:bg-gray-100 hover:text-gray-700 text-2xl`}
+              {AdminLinks.map((l, i) => (
+                <Tooltip
+                  content={l.name}
+                  showArrow
+                  placement="right"
+                  size="lg"
+                  color="foreground"
+                  radius="sm"
+                  delay={0}
+                  closeDelay={0}
+                  key={i}
                 >
-                  <FaSchool />
-                </NavLink>
-              </Tooltip>
-            </div>
-
-            <ul className="space-y-1 border-t border-gray-100 pt-4">
-              {Links.map((l) => (
-                <li>
                   <NavLink
                     to={l.href}
-                    className="group relative flex justify-center rounded p-2  text-gray-500 hover:bg-gray-100 hover:text-gray-700  text-2xl"
+                    className={` group relative flex justify-center rounded p-2  text-gray-500 hover:bg-gray-100 hover:text-gray-700 text-2xl `}
                   >
                     {l.icon}
                   </NavLink>
-                </li>
+                </Tooltip>
+              ))}
+             
+            </div>
+
+            <ul className="space-y-1 border-t border-gray-100 pt-4">
+              {Links.map((l,i) => (
+                <Tooltip
+                  content={l.name}
+                  showArrow
+                  placement="right"
+                  size="lg"
+                  color="foreground"
+                  radius="sm"
+                  delay={0}
+                  closeDelay={0}
+                  key={i}
+                >
+                  <li>
+                    <NavLink
+                      to={l.href}
+                      className="group relative flex justify-center rounded p-2  text-gray-500 hover:bg-gray-100 hover:text-gray-700  text-2xl"
+                    >
+                      {l.icon}
+                    </NavLink>{" "}
+                  </li>
+                </Tooltip>
               ))}
             </ul>
           </div>

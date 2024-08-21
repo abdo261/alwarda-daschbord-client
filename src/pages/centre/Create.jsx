@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   Button,
   Input,
@@ -36,14 +36,14 @@ const Create = ({ isOpen, onOpenChange }) => {
               />
 
               <label
-                for="color"
-                class="block text-sm font-medium mb-2 "
+                htmlFor="color"
+                className="block text-sm font-medium mb-2 "
               >
                 Choisire un coleur
               </label>
               <input
                 type="color"
-                class="p-1 h-10 w-14 block mx-auto bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
+                className="p-1 h-10 w-14 block mx-auto bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
                 id="color"
                 title="Choose your color"
               />
