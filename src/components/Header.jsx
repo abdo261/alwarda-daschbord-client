@@ -9,7 +9,7 @@ const Header = ({ toggleSideBare, open }) => {
 
   return (
     <header
-      className={`fixed top-0 right-0   ${
+      className={`fixed top-0 right-0  z-[1000] ${
         open ? "left-16" : "left-0"
       } duration-500 ease-in-out  h-16 bg-white  flex justify-between px-3 items-center dark:bg-[#242526] dark:text-white`}
     >
